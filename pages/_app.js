@@ -1,0 +1,12 @@
+
+import '@/styles/globals.css'
+
+export default function App({ Component, pageProps, children }) {
+
+  return (
+    <>
+      <Component {...pageProps} />
+        {children}
+    </>
+  );
+}
