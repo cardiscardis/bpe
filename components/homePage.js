@@ -6,6 +6,11 @@ export default function HomePage() {
   const [walletAddress, setWalletAddress] = React.useState(false)
   const [maticBalance, setMaticBalance] = React.useState()
   const [centBalance, setCentBalance] = React.useState()
+  const [isConnected, setIsConnected] = React.useState()
+  const [messageFromFlutter, setMessageFromFlutter] = React.useState()
+  const [messageHandler, setMessageHandler] = React.useState()
+  const [messageToFlutter, setMessageToFlutter] = React.useState()
+  const [message,setMessage]=React.useState()
 /*
   React.useEffect(() => {
     const handleStorageChange = () => {
@@ -30,6 +35,26 @@ export default function HomePage() {
   }, []);
   console.log(isConnected, maticBalance, centBalance)
 */
+
+function sendMessageToFlutter(message) {
+  window.Flutter.postMessage(message);
+}
+
+React.useEffect(() => {
+  function handleReceiveMessage(event) {
+    setMessageFromFlutter(event.data);
+  }
+
+  window.addEventListener('message', handleReceiveMessage);
+
+
+  return () => {
+    window.removeEventListener('message', handleReceiveMessage);
+  };
+}, []);
+
+
+
   return (
     <>
       <div className="text-2xl">isConnected: {walletAddress ? walletAddress : ''} </div>
@@ -42,7 +67,10 @@ export default function HomePage() {
         />
         TOKEN
         <button
-          onClick={() => {}}
+          onClick={() => {
+            const amount = document.getElementById('cela').value;
+            sendMessageToFlutter(amount);
+          }}
           className={`bg-[#A5BCFF] rounded-[17px] `}>
           <div className={`bg-[#3166FF] rounded-[15px] pt-2 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
             submit
@@ -64,9 +92,11 @@ export default function HomePage() {
           <div className={`bg-[#3166FF] rounded-[15px] pt-2 pb-1 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
             submit
           </div>
-        </button>
+        </button> 
         <div className="text-md">Matic tx : </div>
       </div> 
+         
+
     </>
   )
 }
