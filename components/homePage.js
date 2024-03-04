@@ -4,7 +4,7 @@ export default function HomePage() {
 
   const [parameters, setParameters] = React.useState()
   const [walletAddress, setWalletAddress] = React.useState(false)
-  const [maticBalance, setMaticBalance] = React.useState()
+  const [maticBalance, setMaticBalance] = React.useState()``
   const [centBalance, setCentBalance] = React.useState()
   const [isConnected, setIsConnected] = React.useState()
   const [messageFromFlutter, setMessageFromFlutter] = React.useState()
@@ -37,7 +37,7 @@ export default function HomePage() {
 */
 
 function sendMessageToFlutter(message) {
-  window.Flutter.postMessage(message);
+  window.Flutter.postMessage();
 }
 
 React.useEffect(() => {
@@ -62,7 +62,7 @@ React.useEffect(() => {
         <input
           id="cela"
           type="text"
-          placeholder="amount"
+          placeholder="cela amount"
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
         />
         TOKEN
@@ -93,8 +93,13 @@ React.useEffect(() => {
             submit
           </div>
         </button> 
+
+        
+      <div className="text-md">Matic tx: {messageFromFlutter}</div> {/* Display message here */}
+    </div>
+
         <div className="text-md">Matic tx : </div>
-      </div> 
+      
          
 
     </>
