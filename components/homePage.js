@@ -96,7 +96,7 @@ React.useEffect(() => {
           </div>
         </button>
         <div>Message from Flutter: {messageFromFlutter.text}</div>
-        <div className="text-md">Matic tx :{messageFromFlutter} </div>
+        <div className="text-md">Matic tx :{messageFromFlutter.text} </div>
            
     </div>
 
