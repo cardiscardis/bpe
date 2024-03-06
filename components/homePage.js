@@ -40,6 +40,10 @@ function sendMessageToFlutter(message) {
   window.Flutter.postMessage(message);
 }
 
+function sendSecondMessageToFlutter(message) {
+  window.Flutter.postMessage(message);
+}
+
 function handleReceiveMessage(event) {
   setMessageFromFlutter(event.data);
 }
@@ -101,7 +105,11 @@ React.useEffect(() => {
         />
         MATIC
         <button
-          onClick={() => {}}
+          onClick={() => {
+            const amount = document.getElementById('matic').value;
+            sendSecondMessageToFlutter(messageFromFlutter.text);
+
+          }}
           className={`bg-[#A5BCFF] rounded-[17px] `}>
           <div className={`bg-[#3166FF] rounded-[15px] pt-2 pb-1 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
             submit
