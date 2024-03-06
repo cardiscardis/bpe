@@ -49,6 +49,10 @@ function sendSecondMessageToFlutter(message) {
 //   setMessageFromFlutter(event.data);
 // }
 
+function receiveMessageFromFlutterWeb(message) {
+  document.getElementById('messagesFromFlutter').innerText = message;
+}
+
 
 
 if (typeof document !== 'undefined') {
@@ -110,7 +114,6 @@ React.useEffect(() => {
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
           
         />
-         <div>Message from Flutter: {messageFromFlutter}</div>
         MATIC
         <button
           onClick={() => {
@@ -123,9 +126,9 @@ React.useEffect(() => {
             submit
           </div>
         </button>
-        <div>Message from Flutter is this: {messageFromFlutter}</div>
-        <div>Message from Flutter: {messageFromFlutter.text}</div>
-        <div className="text-md">Matic tx :{messageFromFlutter.text} </div>
+        {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
+        <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
+        <p>Message from Flutter span is: <span id="messagesFromFlutter"></span></p>
            
     </div>
 
