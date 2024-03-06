@@ -49,9 +49,7 @@ function sendSecondMessageToFlutter(message) {
 //   setMessageFromFlutter(event.data);
 // }
 
-function receiveMessageFromFlutterWeb(message) {
-  document.getElementById('messagesFromFlutter').innerText = message;
-}
+
 
 
 
@@ -65,6 +63,10 @@ if (typeof document !== 'undefined') {
 
 
 React.useEffect(() => {
+  function receiveMessageFromFlutterWeb(message) {
+    setMessageFromFlutter(message)
+    document.getElementById('messagesFromFlutter').innerText = message;
+  }
 
   window.receiveMessageFromFlutter = function(message) {
     setMessageFromFlutter(message);
@@ -86,6 +88,8 @@ React.useEffect(() => {
     <>
       <div className="text-2xl">isConnected: {walletAddress ? walletAddress : ''} </div>
       <div className="flex-col justify-center align-center pt-3">
+
+      <p>Message from Flutter span is: <span id="messagesFromFlutter"></span></p>
         <input
           id="cela"
           type="text"
@@ -128,7 +132,7 @@ React.useEffect(() => {
         </button>
         {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
         <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
-        <p>Message from Flutter span is: <span id="messagesFromFlutter"></span></p>
+       
            
     </div>
 
