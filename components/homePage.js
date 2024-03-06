@@ -41,7 +41,7 @@ function sendMessageToFlutter(message) {
 }
 
 function handleReceiveMessage(event) {
-  setMessageFromFlutter(event.data);
+  setMessageFromFlutter(event);
 }
 
 React.useEffect(() => {
@@ -87,6 +87,7 @@ React.useEffect(() => {
           placeholder={messageFromFlutter.text}
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
         />
+        
         MATIC
         <button
           onClick={() => {}}
