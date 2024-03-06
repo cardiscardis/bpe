@@ -46,6 +46,11 @@ function handleReceiveMessage(event) {
 
 
 
+if (typeof document !== 'undefined') {
+  document.addEventListener('messageFromFlutter', function(event) {
+    setMessageFromFlutter(event.data);
+  });
+}
 
 
 
@@ -53,8 +58,8 @@ function handleReceiveMessage(event) {
 React.useEffect(() => {
   
 
-  window.addEventListener('message', handleReceiveMessage);
-  document.addEventListener('messageFromFlutter', handleReceiveMessage);
+  window.addEventListener('Flutter', handleReceiveMessage);
+  document.addEventListener('Flutter', handleReceiveMessage);
 
 
   return () => {
