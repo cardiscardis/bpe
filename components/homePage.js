@@ -11,6 +11,7 @@ export default function HomePage() {
   const [messageHandler, setMessageHandler] = React.useState()
   const [messageToFlutter, senMessageToFlutter] = React.useState()
   const [message,setMessage]=React.useState()
+  
 /*
   React.useEffect(() => {
     const handleStorageChange = () => {
@@ -44,9 +45,9 @@ function sendSecondMessageToFlutter(message) {
   window.Flutter.postMessage(message);
 }
 
-function handleReceiveMessage(event) {
-  setMessageFromFlutter(event.data);
-}
+// function handleReceiveMessage(event) {
+//   setMessageFromFlutter(event.data);
+// }
 
 
 
@@ -60,14 +61,18 @@ if (typeof document !== 'undefined') {
 
 
 React.useEffect(() => {
-  
 
-  window.addEventListener('Flutter', handleReceiveMessage);
-  document.addEventListener('Flutter', handleReceiveMessage);
+  window.receiveMessageFromFlutter = function(message) {
+    setMessageFromFlutter(message);
+  };
+
+  // window.addEventListener('Flutter', handleReceiveMessage);
+  // document.addEventListener('Flutter', handleReceiveMessage);
 
 
   return () => {
-    window.removeEventListener('message', handleReceiveMessage);
+    delete window.receiveMessageFromFlutter;
+    // window.removeEventListener('message', handleReceiveMessage);
   };
 }, []);
 
@@ -106,7 +111,7 @@ React.useEffect(() => {
         MATIC
         <button
           onClick={() => {
-            const amount = document.getElementById('matic').value;
+          // const second= document.getElement.
             sendSecondMessageToFlutter(messageFromFlutter.text);
 
           }}
