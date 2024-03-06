@@ -41,10 +41,13 @@ function sendMessageToFlutter(message) {
 }
 
 function handleReceiveMessage(event) {
+  window.handleReceiveMessage = handleReceiveMessage;
   const messages = event.data;
  
   setMessageFromFlutter(messages);
 }
+
+
 
 React.useEffect(() => {
   
