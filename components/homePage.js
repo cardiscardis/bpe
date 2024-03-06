@@ -1,18 +1,27 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
 
 export default function HomePage() {
-
-  const [parameters, setParameters] = React.useState()
-  const [walletAddress, setWalletAddress] = React.useState(false)
-  const [maticBalance, setMaticBalance] = React.useState()
-  const [centBalance, setCentBalance] = React.useState()
-  const [isConnected, setIsConnected] = React.useState()
-  const [messageFromFlutter, setMessageFromFlutter] = React.useState('')
-  const [messageHandler, setMessageHandler] = React.useState()
-  const [messageToFlutter, senMessageToFlutter] = React.useState()
-  const [message,setMessage]=React.useState()
+  const [walletAddress, setWalletAddress] = useState(false);
+  const [messageFromFlutter, setMessageFromFlutter] = useState('');
   
-/*
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.addEventListener('messageFromFlutter', function(event) {
+        setMessageFromFlutter(event.data);
+      });
+    }
+
+    return () => {
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('messageFromFlutter', function(event) {
+          setMessageFromFlutter('');
+        });
+      }
+    };
+  }, []);
+
+
+  /*
   React.useEffect(() => {
     const handleStorageChange = () => {
       // Update parameters state when local storage changes
@@ -37,52 +46,9 @@ export default function HomePage() {
   console.log(isConnected, maticBalance, centBalance)
 */
 
-function sendMessageToFlutter(message) {
-  window.Flutter.postMessage(message);
-}
-
-function sendSecondMessageToFlutter(message) {
-  window.Flutter.postMessage(message);
-}
-
-// function handleReceiveMessage(event) {
-//   setMessageFromFlutter(event.data);
-// }
-
-
-
-
-
-if (typeof document !== 'undefined') {
-  document.addEventListener('messageFromFlutter', function(event) {
-    setMessageFromFlutter(event.data);
-  });
-}
-
-
-
-
-React.useEffect(() => {
-  function receiveMessageFromFlutterWeb(message) {
-    setMessageFromFlutter(message)
-    document.getElementById('messagesFromFlutter').innerText = message;
+  function sendMessageToFlutter(message) {
+    window.Flutter.postMessage(message);
   }
-
-  window.receiveMessageFromFlutter = function(message) {
-    setMessageFromFlutter(message);
-  };
-
-  // window.addEventListener('Flutter', handleReceiveMessage);
-  // document.addEventListener('Flutter', handleReceiveMessage);
-
-
-  return () => {
-    delete window.receiveMessageFromFlutter;
-    // window.removeEventListener('message', handleReceiveMessage);
-  };
-}, []);
-
-
 
   return (
     <>
@@ -135,10 +101,6 @@ React.useEffect(() => {
        
            
     </div>
-
-       
-    
-
     </>
-  )
+  );
 }
