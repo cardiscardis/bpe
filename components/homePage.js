@@ -17,7 +17,7 @@ export default function HomePage() {
       if (event && event.data && event.data.fromFlutter) {
         setMessageFromFlutter(event.data.message);
       } else {
-        console.error('Unexpected message event:',JSON.stringify(event.data.message, null, 2));
+        console.error('Unexpected message event:',JSON.stringify(event, null, 2));
       }
     };
   
