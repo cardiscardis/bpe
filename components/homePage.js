@@ -88,6 +88,7 @@ React.useEffect(() => {
           placeholder="cela amount"
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
         />
+
         TOKEN
         <button
           onClick={() => {
@@ -107,6 +108,7 @@ React.useEffect(() => {
           type="text"
           placeholder={messageFromFlutter.text}
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
+          
         />
         MATIC
         <button
@@ -120,6 +122,7 @@ React.useEffect(() => {
             submit
           </div>
         </button>
+        <div>Message from Flutter is this: {messageFromFlutter}</div>
         <div>Message from Flutter: {messageFromFlutter.text}</div>
         <div className="text-md">Matic tx :{messageFromFlutter.text} </div>
            
