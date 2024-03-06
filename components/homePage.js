@@ -13,17 +13,23 @@ export default function HomePage() {
   }
 
   useEffect(() => {
+    window.receiveMessageFromFlutter = function(event) {
+      if (event.data.fromFlutter) {
+        setMessageFromFlutter(event.data.message);
+      }
+    };
+  
     if (typeof window !== 'undefined') {
-      window.addEventListener('message', receiveMessageFromFlutter);
+      window.addEventListener('message', window.receiveMessageFromFlutter);
     }
   
     return () => {
       if (typeof window !== 'undefined') {
-        window.removeEventListener('message', receiveMessageFromFlutter);
+        window.removeEventListener('message', window.receiveMessageFromFlutter);
+        window.receiveMessageFromFlutter = null;
       }
     };
   }, []);
-
   /*
   React.useEffect(() => {
     const handleStorageChange = () => {
