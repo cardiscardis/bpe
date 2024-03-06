@@ -3,17 +3,22 @@ import React, { useEffect, useState } from "react";
 export default function HomePage() {
   const [walletAddress, setWalletAddress] = useState(false);
   const [messageFromFlutter, setMessageFromFlutter] = useState('');
-  
+
+
+
   useEffect(() => {
     if (typeof document !== 'undefined') {
-      document.addEventListener('messageFromFlutter', function(event) {
-        setMessageFromFlutter(event.data);
+      window.addEventListener('message', function(event) {
+        if (event.data.fromFlutter) {
+          setMessageFromFlutter(event.data.message);
+          console.log('message from flutter', event.data.message);
+        }
       });
     }
 
     return () => {
-      if (typeof document !== 'undefined') {
-        document.removeEventListener('messageFromFlutter', function(event) {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('message', function(event) {
           setMessageFromFlutter('');
         });
       }
@@ -63,6 +68,7 @@ export default function HomePage() {
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
         />
 
+
         TOKEN
         <button
           onClick={() => {
@@ -88,7 +94,7 @@ export default function HomePage() {
         <button
           onClick={() => {
           // const second= document.getElement.
-            sendSecondMessageToFlutter(messageFromFlutter.text);
+           // sendSecondMessageToFlutter(messageFromFlutter.text);
 
           }}
           className={`bg-[#A5BCFF] rounded-[17px] `}>
