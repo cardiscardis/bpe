@@ -6,25 +6,23 @@ export default function HomePage() {
 
 
 
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      window.addEventListener('message', function(event) {
-        if (event.data.fromFlutter) {
-          setMessageFromFlutter(event.data.message);
-          console.log('message from flutter', event.data.message);
-        }
-      });
+  function receiveMessageFromFlutter(event) {
+    if (event.data.fromFlutter) {
+      setMessageFromFlutter(event.data.message);
     }
+  }
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('message', receiveMessageFromFlutter);
+    }
+  
     return () => {
       if (typeof window !== 'undefined') {
-        window.removeEventListener('message', function(event) {
-          setMessageFromFlutter('');
-        });
+        window.removeEventListener('message', receiveMessageFromFlutter);
       }
     };
   }, []);
-
 
   /*
   React.useEffect(() => {
