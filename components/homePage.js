@@ -15,9 +15,10 @@ export default function HomePage() {
   useEffect(() => {
     window.receiveMessageFromFlutter = function(event) {
       if (event && event.data && event.data.fromFlutter) {
-        console.log('Received message from Flutter:', event);
+        console.log('Received message from Flutter:', JSON.stringify(event));
         setMessageFromFlutter(event.data.message);
       } else {
+        console.log('Received message from Flutter:', JSON.stringify(event.message));
         console.error('Unexpected message event:',JSON.stringify(event, null, 2));
       }
     };
