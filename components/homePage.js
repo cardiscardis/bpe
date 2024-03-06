@@ -36,8 +36,8 @@ export default function HomePage() {
   console.log(isConnected, maticBalance, centBalance)
 */
 
-function sendMessageToFlutter(messageToFlutter) {
-  window.Flutter.postMessage(messageToFlutter.text);
+function sendMessageToFlutter(message) {
+  window.Flutter.postMessage(message);
 }
 
 function handleReceiveMessage(event) {
