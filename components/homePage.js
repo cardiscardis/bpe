@@ -40,11 +40,9 @@ function sendMessageToFlutter(message) {
   window.Flutter.postMessage(message);
 }
 
-function handleReceiveMessage(event) {
-  window.handleReceiveMessage = handleReceiveMessage;
-  const messages = event.data;
- 
-  setMessageFromFlutter(messages);
+
+window.handleReceiveMessage = function(message) {
+  setMessageFromFlutter(message);
 }
 
 
