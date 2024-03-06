@@ -18,6 +18,7 @@ export default function HomePage() {
         console.log('Received message from Flutter:', JSON.stringify(event));
         setMessageFromFlutter(event.data.message);
       } else {
+        setMessageFromFlutter( JSON.stringify(event.message));
         console.log('Received message from Flutter:', JSON.stringify(event.message));
         console.error('Unexpected message event:',JSON.stringify(event, null, 2));
       }
