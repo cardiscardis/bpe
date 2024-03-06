@@ -9,7 +9,7 @@ export default function HomePage() {
   const [isConnected, setIsConnected] = React.useState()
   const [messageFromFlutter, setMessageFromFlutter] = React.useState('')
   const [messageHandler, setMessageHandler] = React.useState()
-  const [messageToFlutter, setMessageToFlutter] = React.useState()
+  const [messageToFlutter, senMessageToFlutter] = React.useState()
   const [message,setMessage]=React.useState()
 /*
   React.useEffect(() => {
@@ -36,8 +36,8 @@ export default function HomePage() {
   console.log(isConnected, maticBalance, centBalance)
 */
 
-function sendMessageToFlutter(_message) {
-  window.Flutter.postMessage();
+function sendMessageToFlutter(messageToFlutter) {
+  window.Flutter.postMessage(messageToFlutter.text);
 }
 
 function handleReceiveMessage(event) {
