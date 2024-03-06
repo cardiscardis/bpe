@@ -44,10 +44,17 @@ function handleReceiveMessage(event) {
   setMessageFromFlutter(event.data);
 }
 
+
+
+
+
+
+
 React.useEffect(() => {
   
 
   window.addEventListener('message', handleReceiveMessage);
+  document.addEventListener('messageFromFlutter', handleReceiveMessage);
 
 
   return () => {
