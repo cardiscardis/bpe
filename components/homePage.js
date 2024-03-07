@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 export default function HomePage() {
   const [walletAddress, setWalletAddress] = useState(false);
   const [messageFromFlutter, setMessageFromFlutter] = useState({text: 'wale'});
+  const [maticValue, setMaticValue] = useState('');
+
 
 
 
@@ -70,8 +72,6 @@ export default function HomePage() {
     
       <div className="text-2xl">isConnected: {walletAddress ? walletAddress : ''} </div>
       <div className="flex-col justify-center align-center pt-3">
-
-      <p>Message from Flutter span is: <span id="messagesFromFlutter"></span></p>
         <input
           id="cela"
           type="text"
@@ -97,7 +97,8 @@ export default function HomePage() {
         <input
           id="matic"
           type="text"
-          placeholder={messageFromFlutter ? messageFromFlutter.text : "wale"}
+          placeholder={messageFromFlutter ? messageFromFlutter.text : maticValue}
+          onChange={(e) => setMaticValue(e.target.value)}
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
           
         />
