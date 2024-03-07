@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 export default function HomePage() {
   const [walletAddress, setWalletAddress] = useState(false);
-  const [messageFromFlutter, setMessageFromFlutter] = useState('');
+  const [messageFromFlutter, setMessageFromFlutter] = useState({text: 'wale'});
 
 
 
   function receiveMessageFromFlutter(event) {
     if (event.data.fromFlutter) {
-      setMessageFromFlutter(event.data.message);
+      setMessageFromFlutter({text: event.data.message});
     }
   }
 
@@ -16,9 +16,9 @@ export default function HomePage() {
     window.receiveMessageFromFlutter = function(event) {
       if (event && event.data && event.data.fromFlutter) {
         console.log('Received message from Flutter:', JSON.stringify(event));
-        setMessageFromFlutter(event.data.message);
+        setMessageFromFlutter({text: event.data.message});
       } else {
-        setMessageFromFlutter( JSON.stringify(event.message));
+        setMessageFromFlutter(JSON.stringify(event.message));
         
         console.log('Received message from Flutter:', JSON.stringify(event.message));
         console.error('Unexpected message event:',JSON.stringify(event, null, 2));
@@ -67,6 +67,7 @@ export default function HomePage() {
 
   return (
     <>
+    
       <div className="text-2xl">isConnected: {walletAddress ? walletAddress : ''} </div>
       <div className="flex-col justify-center align-center pt-3">
 
@@ -86,7 +87,7 @@ export default function HomePage() {
             sendMessageToFlutter(amount);
           }}
           className={`bg-[#A5BCFF] rounded-[17px] `}>
-          <div className={`bg-[#3166FF] rounded-[15px] pt-2 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
+          -<div className={`bg-[#3166FF] rounded-[15px] pt-2 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
             submit
           </div>
         </button>
@@ -96,7 +97,7 @@ export default function HomePage() {
         <input
           id="matic"
           type="text"
-          placeholder={messageFromFlutter.text}
+          placeholder={messageFromFlutter ? messageFromFlutter.text : "wale"}
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
           
         />
