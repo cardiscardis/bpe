@@ -119,15 +119,26 @@ export default function HomePage() {
         
 
     {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
-    <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
-     
+    */}
+      <div className="text-md">Matic tx :{messageFromFlutter.text} </div>
        
   </div>
 
+  
+
   <div className="flex-col justify-center align-center pt-3">
+  <input
+          id="matic"
+          type="text"
+          placeholder={messageFromFlutter ? messageFromFlutter.text : maticValue}
+          onChange={(e) => setMaticValue(e.target.value)}
+          className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
+          
+        />
+
+    
   <p>Message from Flutter: {messageFromFlutter ? messageFromFlutter.text : 'No message'}</p>
-     
-       
+    
   </div>
 
     </>
