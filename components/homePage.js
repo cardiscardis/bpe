@@ -130,8 +130,8 @@ export default function HomePage() {
   <input
           id="matic"
           type="text"
-          placeholder={messageFromFlutter ? messageFromFlutter.text : maticValue}
-          onChange={(e) => setMaticValue(e.target.value)}
+          placeholder={messageFromFlutter ? messageFromFlutter.text : ""}
+        
           className='w-40 rounded-3xl text-center text-[#223A7E] pt-1 items-center justify-center text-black text-xl bg-[#DCE5FF]'
           
         />
