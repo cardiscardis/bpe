@@ -21,7 +21,7 @@ export default function HomePage() {
         setMessageFromFlutter({text: event.data.message});
       } else
        {
-        setMessageFromFlutter(prevState => ({text: prevState ? prevState.text + event.data.message : event.data.message}));    
+        setMessageFromFlutter(prevState => ({text: prevState ? prevState.text + JSON.stringify(event.message) : JSON.stringify(event.message)}));    
         //setMessageFromFlutter(JSON.stringify(event.message));
         
         console.log('Received message is :', JSON.stringify(event.message));
