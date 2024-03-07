@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function HomePage() {
   const [walletAddress, setWalletAddress] = useState(false);
-  const [messageFromFlutter, setMessageFromFlutter] = useState({text: 'wale'});
+  const [messageFromFlutter, setMessageFromFlutter] = useState({text: ''});
   const [maticValue, setMaticValue] = useState('');
 
 
@@ -19,10 +19,12 @@ export default function HomePage() {
       if (event && event.data && event.data.fromFlutter) {
         console.log('Received message from Flutter:', JSON.stringify(event));
         setMessageFromFlutter({text: event.data.message});
-      } else {
-        setMessageFromFlutter(JSON.stringify(event.message));
+      } else
+       {
+        setMessageFromFlutter(prevState => ({text: prevState ? prevState.text + event.data.message : event.data.message}));    
+        //setMessageFromFlutter(JSON.stringify(event.message));
         
-        console.log('Received message from Flutter:', JSON.stringify(event.message));
+        console.log('Received message is :', JSON.stringify(event.message));
         console.error('Unexpected message event:',JSON.stringify(event, null, 2));
       }
     };
