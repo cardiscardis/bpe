@@ -69,7 +69,7 @@ export default function HomePage() {
 
   return (
     <>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <div className="text-2xl">isConnected: {walletAddress ? walletAddress : ''} </div>
       <div className="flex-col justify-center align-center pt-3">
         <input
@@ -113,12 +113,12 @@ export default function HomePage() {
             submit
           </div>
         </button>
-        <p>Message from Flutter is: {messageFromFlutter ? messageFromFlutter.text : 'No message'}</p>
-        {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
-        <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
+
+    {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
+    <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
+     
        
-           
-    </div>
+  </div>
     </>
   );
 }
