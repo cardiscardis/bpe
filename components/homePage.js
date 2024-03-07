@@ -113,6 +113,7 @@ export default function HomePage() {
             submit
           </div>
         </button>
+        <p>Message from Flutter is: {messageFromFlutter ? messageFromFlutter.text : 'No message'}</p>
         {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
         <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
        
