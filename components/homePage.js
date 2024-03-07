@@ -136,8 +136,7 @@ export default function HomePage() {
         MATICS
         <button
           onClick={() => {
-        
-
+      
           }}
           className={`bg-[#A5BCFF] rounded-[17px] `}>
           <div className={`bg-[#3166FF] rounded-[15px] pt-2 pb-1 px-3 text-[#FFFFFF] text-md font-octarinebold cursor-pointer`}>
@@ -145,7 +144,7 @@ export default function HomePage() {
           </div>
         </button>
 
-        
+        <div>Message from Flutter: {messageFromFlutter ? messageFromFlutter.text : 'No message'}</div>
 
     {/* <div>Message from Flutter: {messageFromFlutter.text}</div>
     <div className="text-md">Matic tx :{messageFromFlutter.text} </div> */}
